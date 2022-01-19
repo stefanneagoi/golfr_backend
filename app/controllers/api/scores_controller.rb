@@ -5,7 +5,7 @@ module Api
     before_action :validate_score_user_id, only: :destroy
 
     def user_scores
-      user = User.find_by_id(params[:id])
+      user = User.find_by(id: params[:id])
 
       if user.nil?
         render json: {

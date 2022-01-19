@@ -5,16 +5,16 @@ module Api
     before_action :logged_in!, only: :user_name
 
     def user_name
-      user = User.find_by_id(params[:id])
-      if !user.nil?
-        render json: {
-          name: user.name
-        }
-      else
+      user = User.find_by(id: params[:id])
+      if user.nil?
         render json: {
           error: [
             'User does not exist'
           ]
+        }
+      else
+        render json: {
+          name: user.name
         }
       end
     end
