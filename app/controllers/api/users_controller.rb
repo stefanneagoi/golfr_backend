@@ -14,8 +14,10 @@ module Api
         }
       else
         render json: {
-          name: user.name,
-          scores: user.scores
+          user: {
+            name: user.name,
+            scores: user.scores
+          }
         }
       end
     end
